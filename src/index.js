@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-
+const routes = require('./routes')
 const app = express();
 
 mongoose.connect('mongodb+srv://vhcord:hager1417@cluster0-yzfmt.mongodb.net/week10?retryWrites=true&w=majority', {
@@ -8,8 +8,6 @@ mongoose.connect('mongodb+srv://vhcord:hager1417@cluster0-yzfmt.mongodb.net/week
   useUnifiedTopology: true,
 });
 
-app.get('/', (request , response) => {
-  return response.json({ message: 'vai logo com video porra'});
-})
-
+app.use(express.json())
+app.use(routes)
 app.listen(3333);
