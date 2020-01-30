@@ -36,8 +36,12 @@ module.exports = {
       location
     })
   }
-
-    
     return response.json(dev);
+  },
+
+  async delete(req, res) {
+    const { github_username } = req.params;
+    await Dev.deleteOne({ github_username });
+    return res.json();
   }
 }
